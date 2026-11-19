@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida 55 — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: every official name, description and grade, a cited guide for each, a roadmap to the platinum, and a checklist that saves in your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#241a33"/>
+        <stop offset="0.55" stop-color="#1a2a33"/>
+        <stop offset="1" stop-color="#14262a"/>
+      </linearGradient>
+      <linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f2a104"/>
+        <stop offset="1" stop-color="#e8437a"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="150" fill="url(#dusk)"/>
+    <g stroke="#e8437a" stroke-width="2" opacity="0.55">
+      <line x1="960" y1="118" x2="960" y2="18"/>
+      <line x1="960" y1="118" x2="880" y2="30"/>
+      <line x1="960" y1="118" x2="1040" y2="30"/>
+      <line x1="960" y1="118" x2="830" y2="62"/>
+      <line x1="960" y1="118" x2="1090" y2="62"/>
+      <line x1="960" y1="118" x2="800" y2="100"/>
+      <line x1="960" y1="118" x2="1120" y2="100"/>
+    </g>
+    <circle cx="960" cy="118" r="34" fill="url(#sunset)"/>
+    <circle cx="960" cy="118" r="44" fill="none" stroke="#f2a104" stroke-width="1.5" opacity="0.6"/>
+    <g fill="#0a1418">
+      <rect x="120" y="82" width="26" height="68"/>
+      <rect x="152" y="66" width="20" height="84"/>
+      <rect x="178" y="92" width="30" height="58"/>
+      <rect x="700" y="76" width="22" height="74"/>
+      <rect x="728" y="58" width="18" height="92"/>
+      <rect x="752" y="88" width="26" height="62"/>
+    </g>
+    <g stroke="#0a1418" stroke-width="5" fill="none" stroke-linecap="round">
+      <path d="M70 150 Q 78 104 96 84"/>
+      <path d="M96 84 Q 70 66 44 70"/>
+      <path d="M96 84 Q 84 58 60 50"/>
+      <path d="M96 84 Q 104 56 128 50"/>
+      <path d="M96 84 Q 122 66 148 70"/>
+      <path d="M96 84 Q 98 62 96 44"/>
+    </g>
+    <g stroke="#0a1418" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M1140 150 Q 1134 112 1120 94"/>
+      <path d="M1120 94 Q 1100 78 1078 82"/>
+      <path d="M1120 94 Q 1112 72 1096 64"/>
+      <path d="M1120 94 Q 1132 70 1152 66"/>
+      <path d="M1120 94 Q 1140 80 1160 84"/>
+    </g>
+    <rect y="148" width="1200" height="2" fill="#e8437a"/>
+  </svg>
+  <div class="hero-text">
+    <p class="hero-kicker">Grand Theft Auto VI &middot; PlayStation 5</p>
+    <h1>Leonida 55</h1>
+    <p class="hero-sub">Every trophy, its official words, a cited guide — and a checklist that remembers.</p>
+    <p class="hero-facts"><span><strong>55</strong> trophies</span><span><strong>1</strong> platinum &middot; <strong>2</strong> gold &middot; <strong>6</strong> silver &middot; <strong>46</strong> bronze</span><span><strong>28</strong> hidden</span><span><strong>0</strong> online</span><span><strong>~200 h</strong> to platinum</span></p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <nav class="tabs" aria-label="Views">
+    <button type="button" class="tab active" data-view="checklist">Checklist</button>
+    <button type="button" class="tab" data-view="roadmap">Roadmap</button>
+    <button type="button" class="tab" data-view="completion">100% Completion</button>
+    <button type="button" class="tab" data-view="sources">Sources &amp; method</button>
+  </nav>
+  <div class="toolbar-actions">
+    <label class="spoiler-toggle"><input type="checkbox" id="spoilerToggle" checked> <span>Hide story spoilers</span></label>
+    <button type="button" id="exportBtn">Export progress</button>
+    <label class="import-btn">Import progress <input type="file" id="importFile" accept="application/json,.json"></label>
+    <button type="button" id="resetBtn" class="quiet">Reset</button>
+  </div>
+</div>
+
+<div class="progress-strip">
+  <div class="progress-numbers"><strong id="progressText">0 of 55 earned</strong><span id="gradeCounts"></span></div>
+  <div class="progress-bar" role="progressbar" aria-label="Trophies earned" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0"><div class="progress-fill" id="progressFill"></div></div>
+  <p class="progress-note" id="progressNote">Progress saves in this browser automatically.</p>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <label class="search-label" for="searchInput">Search trophies</label>
+    <input type="search" id="searchInput" placeholder="Name, description or guide text…" autocomplete="off">
+    <div class="filter-group">
+      <p class="filter-title">Kind</p>
+      <div class="chips" id="kindChips"></div>
+    </div>
+    <div class="filter-row">
+      <label>Grade
+        <select id="gradeSelect">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label>Show
+        <select id="earnedSelect">
+          <option value="all">All trophies</option>
+          <option value="earned">Earned only</option>
+          <option value="remaining">Remaining only</option>
+        </select>
+      </label>
+    </div>
+    <div class="sidebar-stats" id="sidebarStats"></div>
+    <div class="sidebar-warning">
+      <p><strong>One missable trophy.</strong> Positive Mental Attitude has a Chapter 1 meditation you can lose — see its guide, and keep a manual save from early Chapter 1.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <section id="view-checklist" class="view active">
+      <p class="result-count" id="resultCount"></p>
+      <div class="checklist-grid">
+        <ul class="trophy-list" id="trophyList"></ul>
+        <aside class="detail" id="detailPanel" aria-live="polite"></aside>
+      </div>
+    </section>
+    <section id="view-roadmap" class="view">
+      <h2 id="roadmapTitle">Roadmap to the platinum</h2>
+      <p class="view-intro" id="roadmapSummary"></p>
+      <div class="rules" id="roadmapRules"></div>
+      <div class="stages" id="roadmapStages"></div>
+    </section>
+    <section id="view-completion" class="view">
+      <h2 id="completionTitle">What 100% completion asks for</h2>
+      <p class="view-intro" id="completionNote"></p>
+      <table class="completion-table">
+        <thead><tr><th>Part of the game</th><th>Needed for 100%</th><th>Source</th></tr></thead>
+        <tbody id="completionRows"></tbody>
+      </table>
+      <p class="view-foot">A Long Road is the gold trophy for 100% completion — and the hardest trophy on the list. Its checklist appears in-game at Touch Pad &gt; Progress &gt; 100% Completion after the story, and progress made before the credits already counts.</p>
+    </section>
+    <section id="view-sources" class="view">
+      <h2>Sources &amp; method</h2>
+      <p class="view-intro">Names, descriptions and grades are the official PlayStation text, as listed by Exophase and PSNProfiles — the two agree on every entry. Every guide is original writing for this entry: it may draw on other guides, wikis and forum posts, and it cites them by name and link beside the guide, so a reader sees where each fact comes from. Nothing is copied. Counts (42 shooting challenges, 14 drone locations, 18 meditation spots and the rest) come from the cited guides, cross-checked where two sources state them.</p>
+      <h3>Guides cited in this entry</h3>
+      <ul class="source-list" id="sourceList"></ul>
+      <h3>What is still unconfirmed</h3>
+      <p>Six guides carry an <span class="tag unconfirmed">unconfirmed</span> mark: the exact trigger was not confirmed by the guide writers at launch, and the guide says so and gives the best current lead with its source. Check the cited guide for the latest word before hunting one of those.</p>
+      <h3>Artwork</h3>
+      <p>The sunset banner above is original vector art drawn for this guide. No Rockstar Games logo, official artwork, box art or game screenshot appears anywhere in this app.</p>
+      <h3>Offline</h3>
+      <p>This app is static files. It fetches nothing at run time except its own data files, and it works with the network off. Source links open only when you follow them.</p>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <p>Leonida 55 — an unofficial fan guide. Grand Theft Auto and Rockstar Games are trademarks of their owners; this guide is not affiliated with or endorsed by them. Trophy names and descriptions are shown as PlayStation publishes them.</p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
