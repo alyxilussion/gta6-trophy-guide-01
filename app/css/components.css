@@ -1,0 +1,254 @@
+/* VICE ATLAS — components: trophy rows, medallions, guide pane, roadmap,
+   missable watch, 100% list, sources matrix. */
+
+/* ---------- trophy rows ---------- */
+
+.trophy-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+
+.trophy-row {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e3dcc9;
+  border-radius: var(--radius);
+}
+
+.trophy-row.earned { background: #f2f8ef; border-color: #c4dcb8; }
+.trophy-row.earned .trophy-name { text-decoration: line-through; text-decoration-color: #8a9a7a; }
+
+.kind-icon { width: 46px; height: 46px; margin-top: 2px; }
+.kind-icon svg { display: block; width: 100%; height: 100%; }
+
+.trophy-main { min-width: 0; }
+
+.trophy-head { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+
+.trophy-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.trophy-desc { margin: 3px 0 0; font-size: 14px; color: var(--ink-soft); }
+
+.trophy-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+}
+
+.badge-kind { color: #fff; background: var(--surface); }
+.badge-grade-platinum { color: #26303c; background: var(--platinum); border: 1px solid #b9c6d4; }
+.badge-grade-gold { color: #5c430a; background: #f6dfa8; border: 1px solid #e0bd6a; }
+.badge-grade-silver { color: #39424c; background: #e3e7ea; border: 1px solid #c3c9cf; }
+.badge-grade-bronze { color: #5f3a20; background: #f0d9c2; border: 1px solid #d9ae84; }
+.badge-hidden { color: #4a3a10; background: #f7ecc8; border: 1px solid #e3cf8a; }
+.badge-missable { color: #fff; background: var(--coral-dark); }
+.badge-count { color: var(--ink-soft); background: var(--paper-2); border: 1px solid #ddd3ba; }
+.badge-stage { color: #0d4a44; background: #d8f0ec; border: 1px solid #a8dcd4; }
+
+.trophy-side { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.grade-disc { width: 44px; height: 44px; }
+.grade-disc svg { display: block; width: 100%; height: 100%; }
+
+.earn-toggle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px;
+  font: 700 12px var(--font-body);
+  color: var(--ink-soft);
+  background: #fff;
+  border: 1px solid #cfc8b8;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.earn-toggle:hover { border-color: var(--teal); }
+.earn-toggle .tick {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  background: #c9c2ae;
+  border-radius: 4px;
+}
+.trophy-row.earned .earn-toggle .tick { background: var(--teal); }
+
+.guide-toggle {
+  padding: 0;
+  margin-top: 9px;
+  font: 700 13px var(--font-body);
+  color: var(--coral-dark);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.guide-pane {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--paper);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 8px 8px 0;
+}
+
+.guide-pane p { margin: 0 0 8px; font-size: 14px; color: var(--ink-soft); }
+.guide-pane p:last-child { margin-bottom: 0; }
+
+.guide-sources { font-size: 12.5px; color: var(--muted); }
+.guide-sources strong { color: var(--ink-soft); }
+.guide-sources ul { margin: 4px 0 0; padding-left: 18px; }
+.guide-sources li { margin-bottom: 2px; }
+
+.masked .trophy-name,
+.masked .trophy-desc { filter: blur(5px); user-select: none; }
+.spoiler-note { margin: 3px 0 0; font-size: 13px; font-style: italic; color: var(--muted); }
+
+/* ---------- section headings ---------- */
+
+.section-head { margin: 4px 0 16px; }
+.section-head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--ink);
+}
+.section-head p { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+
+/* ---------- roadmap ---------- */
+
+.stage-list { display: grid; gap: 14px; }
+
+.stage-card {
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid #e3dcc9;
+  border-radius: var(--radius);
+}
+
+.stage-top { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+.stage-num {
+  display: inline-block;
+  padding: 3px 11px;
+  font: 800 12px var(--font-body);
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 999px;
+}
+.stage-card h3 { margin: 0; font-family: var(--font-display); font-size: 20px; }
+.stage-hours { margin-left: auto; font-size: 13px; font-weight: 700; color: var(--muted); }
+.stage-tagline { margin: 4px 0 0; font-size: 14px; color: var(--ink-soft); }
+.stage-tip { margin: 8px 0 0; font-size: 13px; color: var(--muted); font-style: italic; }
+
+.stage-progress { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+.stage-progress .bar-track { flex: 1; height: 9px; background: #ece5d3; border-radius: 999px; overflow: hidden; }
+.stage-progress .bar-fill { height: 100%; background: var(--teal); border-radius: 999px; }
+.stage-progress .bar-count { font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.stage-trophies { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.stage-chip {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 10px 4px 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid #e0d8c2;
+  border-radius: 999px;
+}
+.stage-chip .dot { width: 10px; height: 10px; border-radius: 50%; }
+.stage-chip.done { background: #e7f3e2; border-color: #bcd8b0; text-decoration: line-through; }
+
+/* ---------- missables ---------- */
+
+.watch-intro {
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: #fff3ef;
+  border: 1px solid #f2c4b8;
+  border-left: 4px solid var(--coral);
+  border-radius: 8px;
+}
+.watch-intro strong { color: var(--coral-dark); }
+
+.watch-card {
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  background: #fff;
+  border: 1px solid #e3dcc9;
+  border-radius: var(--radius);
+}
+.watch-card h3 { margin: 0; font-family: var(--font-display); font-size: 19px; }
+.watch-card .watch-why { margin: 6px 0 0; font-size: 14px; color: var(--ink-soft); }
+.watch-card .watch-verdict {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7a5b00;
+  background: #f7ecc8;
+  border-radius: 999px;
+}
+
+/* ---------- 100% list ---------- */
+
+.hundred-list { display: grid; gap: 8px; max-width: 720px; }
+.hundred-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 14px;
+  background: #fff;
+  border: 1px solid #e3dcc9;
+  border-radius: 10px;
+}
+.hundred-count {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--coral-dark);
+}
+.hundred-row p { margin: 0; font-size: 14px; }
+.hundred-row .detail { font-size: 12.5px; color: var(--muted); }
+
+/* ---------- sources ---------- */
+
+.source-matrix { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px; }
+.source-matrix th, .source-matrix td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid #e3dcc9; }
+.source-matrix th { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.source-matrix td:first-child { font-weight: 700; white-space: nowrap; }
+
+.method-block {
+  max-width: 860px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: #fff;
+  border: 1px solid #e3dcc9;
+  border-radius: 10px;
+}
+.method-block h3 { margin: 0 0 6px; font-family: var(--font-display); font-size: 17px; }
+.method-block p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+
+.empty-note { padding: 30px 10px; text-align: center; font-size: 15px; color: var(--muted); }

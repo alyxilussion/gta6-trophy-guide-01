@@ -1,48 +1,57 @@
-# Leonida 55 — GTA VI Trophy Guide & Tracker
+# VICE ATLAS — GTA VI Trophy Guide & Tracker
 
-[![make.fun bounty](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/alyxilussion/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/alyxilussion/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 
-An offline guide and tracker for all **55 PlayStation 5 trophies** of Grand Theft Auto VI, built for the [make.fun gta6-trophy-guide-01 bounty](https://make.fun/bounty/gta6-trophy-guide-01): 1 platinum, 2 gold, 6 silver, 46 bronze — 28 hidden, 0 online, roughly 200 hours to the platinum.
+An offline, open-source guide and tracker for all **55 PlayStation 5 trophies of Grand Theft Auto VI** — built for the [make.fun bounty](https://make.fun/bounty/gta6-trophy-guide-01). Static files, no build step, no network: serve `app/` with any static HTTP server and open `index.html` in desktop Chrome.
 
 ## What it is
 
-- **Every trophy** with its official name, description and grade as PlayStation publishes them, and a guide in this entry's own words that cites its sources (Push Square, KeenGamer, PlanetGTA6, WikiGTAVI and more) beside each trophy.
-- **A roadmap to the platinum** in four stages — story, side strands, the 100% haul, cleanup — with the one missable trophy (Positive Mental Attitude) flagged and the save/cheat rules spelled out.
-- **A tracker**: a checklist saved in the browser (localStorage), export to a file and import back, filters by kind (story, missable, collectibles, activities, crime, quests, secrets, world, milestones, online), by grade, by earned/remaining, plus search.
-- **A spoiler setting** that hides the names and descriptions of the story trophies until they are earned.
-- **A 100% completion breakdown** for A Long Road, built from the cited guides.
-- **Honest about what is unknown**: six guides carry an "unconfirmed" mark where the guide writers had not pinned down the trigger at launch — each gives the best current lead with its source instead of inventing one.
+- **Checklist** — every trophy with its official name, description and grade, a code-drawn SVG icon per kind, a grade medallion, and a guide in our own words with named sources. Progress saves in the browser (localStorage), exports to a file and imports back.
+- **Audit strip** — 55/55 names verified against the official list as Exophase and PSNProfiles published it on 18 Nov 2026: 1 platinum, 2 gold, 6 silver, 46 bronze, 28 hidden.
+- **Filters** — by kind (story, side strands, activities, collectibles, combat, crime, money, secrets, completion), by grade, missable-watch-only, hide-earned, and full-text search.
+- **Spoiler setting (ON by default)** — story trophies stay masked until earned.
+- **Roadmap** — 7 stages to the platinum, every trophy assigned to exactly one stage, with per-stage progress, hours and tips.
+- **Missable watch** — 2 precautionary flags (Positive Mental Attitude, Actions Speak Louder), each labelled as unconfirmed: no trophy is confirmed missable from the official descriptions alone.
+- **100% Completion** — the ten counted categories behind the gold trophy A Long Road.
+- **Sources & method** — a source matrix plus how the hidden flags, counts and roadmap were derived, and what was not verified.
 
-The app is static files under `app/` with no build step and no network request at run time. The sunset banner is original vector art drawn for this guide — no Rockstar logo, official artwork, box art or game screenshot anywhere.
+## Honesty note
+
+Nobody on this guide has played GTA VI to verify a location, a step or a missable flag. Where a guide gives route advice, it says so and labels it as our reading of the official description, not yet checked in-game. No guide text was copied from another guide, wiki, video or forum post — sources are cited, never copied. No Rockstar Games logo or official artwork is used anywhere.
+
+## Layout
+
+```
+app/
+  index.html          shell: header, progress hero, audit strip, tabs, filters
+  css/theme.css       tokens, base, header, hero, tabs, filter bar
+  css/components.css  trophy rows, medallions, roadmap, watch, sources
+  js/icons.js         code-drawn SVG: kind glyphs, grade discs, progress ring
+  js/store.js         localStorage progress, export/import, spoiler setting
+  js/trophies.js       data loading, PSN points, grade/kind helpers
+  js/filters.js       search / kind / grade / missable / hide-earned
+  js/views.js         the five views' renderers
+  js/main.js          boot, state, event wiring
+  data/trophies.json   the 55 official trophies with guides and sources
+  data/roadmap.json   the 7 stages and the 100% categories
+screenshots/          four real browser renders of the app
+main.ts               entrypoint: copies app/ + screenshots/ to /output,
+                      writes dossier.json with vendor/makefun-frontend.ts
+```
 
 ## Run it
 
-Serve `app/` with any static file server and open `index.html`:
-
 ```sh
-cd app && python3 -m http.server 8080
-# open http://localhost:8080
+cd app && python3 -m http.server 8080   # then open http://localhost:8080
 ```
 
-## Hand it in
-
-`main.ts` (Node 22, standard library only) copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the kit's vendored library:
+Build the hand-in output:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
-
-## Layout
-
-- `app/index.html` — the guide shell: hero, tabs, filters, checklist, detail panel, roadmap, 100% and sources views
-- `app/app.js` — tracker logic: rendering, filters, spoiler masking, localStorage progress, export/import
-- `app/style.css` — the Leonida look: bay-mist, ink, neon coral, sun gold
-- `app/data/trophies.json` — the 55 trophies with official text, guides, steps and sources
-- `app/data/roadmap.json` — the four roadmap stages, the four run rules, the 100% breakdown
-- `screenshots/` — 4 real renders of the guide's own code
-- `vendor/makefun-frontend.ts` — the kit's dossier library, unchanged
 
 ## License
 
